@@ -2,18 +2,25 @@ package com.effynet.blogger.query.domain.entities;
 
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClientBuilder;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.PutItemResponse;
 
+import java.net.URI;
 import java.util.HashMap;
 
 public class DynamoDBQueryRepository implements QueryRepository{
+
+    private DynamoDbClient dynamoDbClient;
+
+    public DynamoDBQueryRepository (DynamoDbClient dynamoDbClient) {
+        this.dynamoDbClient = dynamoDbClient;
+    }
+
     @Override
     public void createComment(Comment comment) {
-        DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
-                .region(Region.US_EAST_1)
-                .build();
+        DynamoDbClient dynamoDbClient = getDynamoDbClient();
 
         HashMap<String, AttributeValue> itemValues = new HashMap<>();
         itemValues.put("PK", AttributeValue.builder().s("COMMENTPOSTID#" + comment.getPostId()).build());
@@ -29,4 +36,21 @@ public class DynamoDBQueryRepository implements QueryRepository{
 
         PutItemResponse response = dynamoDbClient.putItem(putItemRequest);
     }
+
+    private DynamoDbClient getDynamoDbClient(String endpoint) {
+        DynamoDbClientBuilder builder = DynamoDbClient.builder();
+
+        builder.region(Region.US_EAST_1);
+
+        if (endpoint != null && !endpoint.isEmpty()) {
+            builder.endpointOverride(URI.create(endpoint));
+        }
+
+        return builder.build();
+    }
+
+    private DynamoDbClient getDynamoDbClient() {
+        return getDynamoDbClient("");
+    }
+
 }
