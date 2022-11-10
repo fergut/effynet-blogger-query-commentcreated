@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DynamoDBQueryRepositoryTest {
 
     @Test
+    @Disabled
     void createComment() {
         DynamoDbClient dynamoDbClient = getDynamoDbClient();
         DynamoDBQueryRepository dynamoDBQueryRepository = new DynamoDBQueryRepository(dynamoDbClient);

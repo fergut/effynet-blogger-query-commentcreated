@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.effynet.blogger.query.domain.entities.CommentServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-11-09T18:50:29" hostname="MacBook-Pro-de-Fernando.local" time="2.792">
+<testsuite name="com.effynet.blogger.query.domain.entities.CommentServiceTest" tests="2" skipped="1" failures="0" errors="0" timestamp="2022-11-10T20:08:05" hostname="MacBook-Pro-de-Fernando.local" time="0.03">
   <properties/>
-  <testcase name="createComment()" classname="com.effynet.blogger.query.domain.entities.CommentServiceTest" time="0.024"/>
-  <testcase name="createCommentIntegrationTest()" classname="com.effynet.blogger.query.domain.entities.CommentServiceTest" time="2.768"/>
+  <testcase name="createComment()" classname="com.effynet.blogger.query.domain.entities.CommentServiceTest" time="0.027"/>
+  <testcase name="createCommentIntegrationTest()" classname="com.effynet.blogger.query.domain.entities.CommentServiceTest" time="0.001">
+    <skipped/>
+  </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

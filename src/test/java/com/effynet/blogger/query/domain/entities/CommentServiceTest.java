@@ -39,6 +39,7 @@ class CommentServiceTest {
     }
 
     @Test
+    @Disabled
     void createCommentIntegrationTest() {
         DynamoDbClient dynamoDbClient = getDynamoDbClient();
         DynamoDBQueryRepository dynamoDBQueryRepository = new DynamoDBQueryRepository(dynamoDbClient);
