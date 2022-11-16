@@ -5,6 +5,8 @@ public class Comment {
     private String content;
     private String postId;
 
+    private CommentStatus status;
+
     public Comment() {
     }
 
@@ -32,12 +34,21 @@ public class Comment {
         this.postId = postId;
     }
 
+    public CommentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(CommentStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
                 "id='" + id + '\'' +
                 ", content='" + content + '\'' +
                 ", postId='" + postId + '\'' +
+                ", status=" + status +
                 '}';
     }
 }
