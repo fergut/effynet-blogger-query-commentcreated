@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.effynet.blogger.query.domain.entities.DynamoDBQueryRepositoryTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2022-11-16T19:54:19" hostname="MacBook-Pro-de-Fernando.local" time="0.001">
+<testsuite name="com.effynet.blogger.query.domain.entities.DynamoDBQueryRepositoryTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2022-11-16T21:06:08" hostname="MacBook-Pro-de-Fernando.local" time="0.0">
   <properties/>
-  <testcase name="createComment()" classname="com.effynet.blogger.query.domain.entities.DynamoDBQueryRepositoryTest" time="0.001">
+  <testcase name="createComment()" classname="com.effynet.blogger.query.domain.entities.DynamoDBQueryRepositoryTest" time="0.0">
     <skipped/>
   </testcase>
   <system-out><![CDATA[]]></system-out>

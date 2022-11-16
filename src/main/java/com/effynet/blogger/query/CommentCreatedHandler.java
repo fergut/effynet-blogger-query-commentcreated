@@ -34,19 +34,16 @@ public class CommentCreatedHandler implements RequestHandler<SQSEvent, SQSBatchR
         for (SQSEvent.SQSMessage message: input.getRecords()) {
             try {
                 messageId = message.getMessageId();
-                System.out.println(messageId);
+                System.out.println("MessageId:" + messageId);
 
                 String commentJsonString = message.getBody();
-                System.out.println(commentJsonString);
-
                 Comment comment = gson.fromJson(commentJsonString, Comment.class);
-                System.out.println(comment);
+                System.out.println("Comment:" + comment);
 
                 commentService.create(comment);
                 System.out.println("OK");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.out.println(messageId);
+                System.out.println("Error" + e);
                 batchItemFailure.add(new SQSBatchResponse.BatchItemFailure(messageId));
             }
         }

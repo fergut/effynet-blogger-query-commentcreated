@@ -55,7 +55,9 @@ public class DynamoDBQueryRepository implements QueryRepository{
         try {
             Map<String, AttributeValue> returnedItem = dynamoDbClient.getItem(getItemRequest).item();
 
-            if (returnedItem != null) {
+            System.out.println("Returned item" + returnedItem);
+
+            if (!returnedItem.isEmpty()) {
                 Comment commentReturned = new Comment();
                 commentReturned.setId(returnedItem.get("id").s());
                 commentReturned.setPostId(returnedItem.get("postId").s());
@@ -72,6 +74,8 @@ public class DynamoDBQueryRepository implements QueryRepository{
             }
 
         } catch (DynamoDbException e) {
+            throw e;
+        } catch (Exception e) {
             throw e;
         }
 

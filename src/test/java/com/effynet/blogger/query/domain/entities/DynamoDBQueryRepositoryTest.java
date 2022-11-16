@@ -7,6 +7,7 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClientBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +44,19 @@ class DynamoDBQueryRepositoryTest {
 
     private DynamoDbClient getDynamoDbClient() {
         return getDynamoDbClient("");
+    }
+
+    @Test
+    void getCommentDoesNotExists() {
+        DynamoDbClient dynamoDbClient = getDynamoDbClient();
+        QueryRepository dynamoDBQueryRepository = new DynamoDBQueryRepository(dynamoDbClient);
+
+        Comment commentFilter = new Comment();
+        commentFilter.setId("doesnotexist");
+        commentFilter.setPostId("doesnotexist");
+
+        Optional<Comment> comment = dynamoDBQueryRepository.getComment(commentFilter);
+
+        assertEquals(true, comment.isEmpty());
     }
 }
