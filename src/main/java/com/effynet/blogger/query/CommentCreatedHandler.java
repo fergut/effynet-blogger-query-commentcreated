@@ -45,6 +45,7 @@ public class CommentCreatedHandler implements RequestHandler<SQSEvent, SQSBatchR
                 commentService.create(comment);
                 System.out.println("OK");
             } catch (Exception e) {
+                System.out.println(e.getMessage());
                 System.out.println(messageId);
                 batchItemFailure.add(new SQSBatchResponse.BatchItemFailure(messageId));
             }
