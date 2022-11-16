@@ -47,6 +47,7 @@ class DynamoDBQueryRepositoryTest {
     }
 
     @Test
+    @Disabled
     void getCommentDoesNotExists() {
         DynamoDbClient dynamoDbClient = getDynamoDbClient();
         QueryRepository dynamoDBQueryRepository = new DynamoDBQueryRepository(dynamoDbClient);
